@@ -40,21 +40,6 @@ body {
  border-top: 1px solid #222;
 }
 
-.btn-full {
- top: 400;
- left: 0px;
-}
-
-.btn-half {
- top: 400;
- right: 180px;
-}
-
-.btn-stop {
- top: 400;
- right: 70px;
-}
-
 .btn-up {
  top: 400;
  left: 110px;
