@@ -78,10 +78,10 @@ var PiRobot = {
  stop: function(){
    async.parallel([
      console.log('Stop'),
-     gpio.write(this.motors.leftFront, 0),
-     gpio.write(this.motors.leftBack, 0),
-     gpio.write(this.motors.rightFront, 0),
-     gpio.write(this.motors.rightBack, 0)
+      gpio.write(this.motors.leftFront, 0),
+      gpio.write(this.motors.leftBack, 0),
+      gpio.write(this.motors.rightFront, 0),
+      gpio.write(this.motors.rightBack, 0)
    ]);
  }
 };
