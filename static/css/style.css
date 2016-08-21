@@ -1,0 +1,87 @@
+html, body {
+ width: 100%;
+ height: 100%;
+ position: relative;
+}
+
+body {
+ background: #eee;
+ margin: 0;
+}
+
+.wrapper {
+ width: 500px;
+ height: 220px;
+ /* we center the button container horizontally and vertically */
+ position: absolute;
+ top: 35%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+
+.btn {
+ display: block;
+ width: 100px;
+ height: 100px;
+ background: #222;
+ border-radius: 5px;
+ color: #aaa;
+ text-align: center;
+ position: absolute;
+ box-shadow:
+   inset 0 0 50px #333,
+   0 4px 0 black,
+   0 2px 0 #222,
+   0 2px 3px #333;
+ text-shadow: 0 -1px 0 black;
+ font: normal 30px/100px helvetica, arial, sans-serif;
+ text-transform: uppercase;
+ cursor: pointer;
+ border-top: 1px solid #222;
+}
+
+.btn-full {
+ top: 400;
+ left: 0px;
+}
+
+.btn-half {
+ top: 400;
+ right: 180px;
+}
+
+.btn-stop {
+ top: 400;
+ right: 70px;
+}
+
+.btn-up {
+ top: 400;
+ left: 110px;
+}
+
+.btn-left {
+ top: 514px;
+ left: 0;
+}
+
+.btn-down {
+ top: 514px;
+ left: 110px;
+}
+
+.btn-right {
+ right: 180;
+ top: 514px;
+}
+
+.btn.is-active {
+ color: #888;
+ background: #222;
+ box-shadow:
+   inset 0 0 50px #333,
+   0 0 3px #333;
+ margin-top: 4px;
+}
+
+
