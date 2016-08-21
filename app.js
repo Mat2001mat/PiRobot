@@ -54,7 +54,7 @@ var PiRobot = {
 },
  
  moveForward : function(){
-    console.log('Drive forward'),
+    console.log('Drive forward');
     async.parallel([
         this.write(this.motors.leftFront, 1),
         this.write(this.motors.rightFront, 1)
@@ -62,10 +62,10 @@ var PiRobot = {
 },
  
  moveBackward: function(){
+  console.log('Drive backwards');
    async.parallel([
-     gpio.write(this.motors.leftBack, 1),
-     gpio.write(this.motors.rightBack, 1),
-     console.log('Drive backwards')
+     this.write(this.motors.leftBack, 1),
+     this.write(this.motors.rightBack, 1),
    ]);
  },
  
@@ -83,10 +83,10 @@ var PiRobot = {
 
  stop: function(){
    async.parallel([
-     gpio.write(this.motors.leftFront, 0),
-     gpio.write(this.motors.rightFront, 0),
-     gpio.write(this.motors.leftBack, 0),
-     gpio.write(this.motors.rightBack, 0)
+     this.write(this.motors.leftFront, 0),
+     this.write(this.motors.rightFront, 0),
+     this.write(this.motors.leftBack, 0),
+     this.write(this.motors.rightBack, 0)
    ]);
  }
 };
