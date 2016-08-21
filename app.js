@@ -46,14 +46,20 @@ var PiRobot = {
      gpio.open(this.motors.rightBack, "output");
  },
  
- //in order to move the tank forward, we supply both motors
- moveForward: function(){
-   async.parallel([
-     console.log('Drive forward'),
-     gpio.write(this.motors.leftFront, 1),
-     gpio.write(this.motors.rightFront, 1)
-   ]);
- },
+ //Wrapper of write function to fix callback
+ write: function (motor, value) {
+    return function (callback) {
+        gpio.write(motor, value, callback);
+    };
+},
+ 
+ moveForward : function(){
+    console.log('Drive forward'),
+    async.parallel([
+        this.write(this.motors.leftFront, 1),
+        this.write(this.motors.rightFront, 1)
+    ]);
+},
  
  moveBackward: function(){
    async.parallel([
