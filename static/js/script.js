@@ -22,18 +22,6 @@ $(function () {
  
    isPressed = true;
    switch(e.which){
-     case 81: //code for the key q
-       socket.emit('move', 'full');
-       ui.full.addClass(activeClass);
-       break;
-     case 69: //code for the key e
-       socket.emit('move', 'half');
-       ui.half.addClass(activeClass);
-       break;
-     case 82: //code for the key r
-       socket.emit('move', 'stop');
-       ui.stop.addClass(activeClass);
-       break;
      case 87: //code for the key w
        socket.emit('move', 'up');
        ui.up.addClass(activeClass);
