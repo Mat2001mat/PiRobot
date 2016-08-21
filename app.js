@@ -22,11 +22,11 @@ var http = http.createServer(app).listen(app.get('port'), function(){
 //we initialise socket.io
 var io = require('socket.io')(http);
  
-//the code controlling the tank starts here
+//the code controlling the PiRobot starts here
 //----------------------------------
  
-//we create the object tank
-var tank = {
+//we create the object PiRobot
+var PiRobot = {
  
  //we create an object with the used pins
  motors: {
@@ -40,10 +40,6 @@ var tank = {
   
  //we open the gpio pins and set them as outputs
  init: function(){
-     rpio.pwmSetRange(this.motors.leftMotorPWM, 1024);
-     rpio.pwmSetRange(this.motors.rightMotorPWM, 1024);
-     rpio.pwmSetData(this.motors.leftMotorPWM, 0);
-     rpio.pwmSetData(this.motors.rightMotorPWM, 0);
      rpio.open(this.motors.leftFront, rpio.OUTPUT, rpio.LOW);
      rpio.open(this.motors.leftBack, rpio.OUTPUT, rpio.LOW);
      rpio.open(this.motors.rightFront, rpio.OUTPUT, rpio.LOW);
@@ -86,28 +82,6 @@ var tank = {
      console.log('Turn right');
  },
  
- //Sets the speed to half
- half: function(){
-     rpio.pwmSetData(this.motors.leftMotorPWM, 768); // Set speed to speed
-     rpio.pwmSetData(this.motors.rightMotorPWM, 768); // Set speed to speed
-     console.log('Half Speed');
- },
- 
-//Sets the speed to half
- full: function(){
-     rpio.pwmSetData(this.motors.leftMotorPWM, 1024);  // Set speed to speed
-     rpio.pwmSetData(this.motors.rightMotorPWM, 1024); // Set speed to speed
-     console.log('Full Speed');
- },
- 
-//Sets the speed to half
- noSpeed: function(){
-     rpio.pwmSetData(this.motors.leftMotorPWM, 0);  // Set speed to speed
-     rpio.pwmSetData(this.motors.rightMotorPWM, 0); // Set speed to speed
-     console.log('No Speed');
- },
-  
- 
  //in order to stop both motors, we set the all pins to 0 value
  stop: function(){
      rpio.write(this.motors.leftFront, rpio.LOW);
@@ -131,15 +105,6 @@ io.sockets.on('connection', function(socket) {
  //we listen the movement signal
  socket.on('move', function(direction) {
    switch(direction){
-     case 'full':
-       tank.full();
-       break;
-     case 'half':
-       tank.half();
-       break;
-     case 'noSpeed':
-       tank.noSpeed();
-       break;   
      case 'up':
        tank.moveForward();
        break;
@@ -161,5 +126,5 @@ io.sockets.on('connection', function(socket) {
  
 });
  
-//we initialise the tank
-tank.init();
+//we initialise the PiRobot
+PiRobot.init();
