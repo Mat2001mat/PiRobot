@@ -40,9 +40,6 @@ var tank = {
   
  //we open the gpio pins and set them as outputs
  init: function(){
-     rpio.open(this.motors.leftMotorPWM, rpio.PWM);
-     rpio.open(this.motors.rightMotorPWM, rpio.PWM);
-     rpio.pwmSetClockDivider(64);
      rpio.pwmSetRange(this.motors.leftMotorPWM, 1024);
      rpio.pwmSetRange(this.motors.rightMotorPWM, 1024);
      rpio.pwmSetData(this.motors.leftMotorPWM, 0);
