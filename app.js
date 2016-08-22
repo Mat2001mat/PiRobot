@@ -59,8 +59,8 @@ var PiRobot = {
  
  moveForward : function(){
     console.log('Drive forward');
-        this.write(this.motors.leftFront, 1);
-        this.write(this.motors.rightFront, 1);
+    gpio.write(this.motors.leftFront, 1);
+    gpio.write(this.motors.rightFront, 1);
 },
  
  moveBackward: function(){
