@@ -44,6 +44,10 @@ var PiRobot = {
      gpio.open(this.motors.leftBack, "output");
      gpio.open(this.motors.rightFront, "output");
      gpio.open(this.motors.rightBack, "output");
+     gpio.open(this.motors.leftMotorPWM, "output");
+     gpio.open(this.motors.rightMotorPWM, "output");
+     gpio.write(this.motors.leftMotorPWM, 1);
+     gpio.write(this.motors.rightMotorPWM, 1);
  },
  
  //Wrapper of write function to fix callback
@@ -71,13 +75,13 @@ var PiRobot = {
  
   //in order to turn right, we supply the motor on the left
  moveLeft: function(){
-   gpio.write(this.motors.leftFront, 1);
+   gpio.write(this.motors.rightFront, 1);
    console.log('Turn left');
  },
  
   //in order to turn left, we supply the motor on the right
  moveRight: function(){
-   gpio.write(this.motors.rightFront, 1);
+   gpio.write(this.motors.leftFront, 1);
    console.log('Turn right');
  },
 
@@ -88,7 +92,17 @@ var PiRobot = {
      this.write(this.motors.leftBack, 0),
      this.write(this.motors.rightBack, 0)
    ]);
+ },
+
+  clean: function(){
+     gpio.close(leftFront);
+     gpio.close(leftBack);
+     gpio.close(rightFront);
+     gpio.close(rightBack);
+     gpio.close(leftMotorPWM);
+     gpio.close(rightMotorPWM);
  }
+ 
 };
  
 //we listen to new connections
